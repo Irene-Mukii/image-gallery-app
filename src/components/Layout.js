@@ -1,19 +1,23 @@
 import Navbar from "./Navbar";
 import UploadForm from "./UploadForm";
+import { Context } from "../context";
+import { useContext } from "react";
 
 function Layout (props) {
+    const { dispatch, state} = useContext(Context);
+
+    const toggle = (bool) => dispatch({type: 'collapse',payload: {bool}});
+
     return (
     <>
     <Navbar />
         <div className=" container mt-5">
-        <button className='btn btn-success float-end' onClick={()=> props.toggle(!props.state.isCollapsed)}> {props.state.isCollapsed ? 'close' : 'Add'} </button>
+        <button className='btn btn-success float-end' onClick={()=> toggle(!state.isCollapsed)}> {state.isCollapsed ? 'close' : 'Add'} </button>
         <div className='clearfix mb-4'></div>
             <UploadForm 
-                inputs={props.state.inputs}
-                isVisible={props.state.isCollapsed}
-                onChange={props.onChange}
-                onSubmit={props.onSubmit}/>
-            { props.children}
+                inputs={state.inputs}
+                isVisible={state.isCollapsed}/>
+            {props.children}
         </div>
         
     </>
