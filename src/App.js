@@ -1,20 +1,19 @@
 import { useMemo, useContext, useEffect } from 'react';
-import app from './lib/firebase.config';
-import { Context } from './context';
+import { Context} from './context';
 import Card from './components/Card';
 import Layout from './components/Layout';
 import './App.css';
+import Firestore from './handlers/firestore';
 
 function App() {
-  const { dispatch, state} = useContext(Context);
-
+  const { read, state} = useContext(Context);
 
   const count = useMemo(()=>{
     return (`You have ${state.items.length} image${state.items.length > 1 ? 's': ''}`)
   }, [state.items]);
 
   useEffect(()=>{
-    app()
+    read()
   },[])
 
   return (

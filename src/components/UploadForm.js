@@ -1,7 +1,11 @@
 import { useMemo, useContext } from "react";
 import { Context } from "../context";
+import Firestore from "../handlers/firestore";
 
- const Preview = (state) => {
+const { writeDoc } = Firestore;
+
+ const Preview = () => {
+    const {state} = useContext(Context);
     return (
          state.inputs.path && 
         <div
@@ -24,6 +28,7 @@ export default function UploadForm() {
 
     const handleOnSubmit = (e)=> {
         e.preventDefault()
+        writeDoc(state.inputs, "stocks").then(console.log)
         dispatch({type: 'setItem'})
         dispatch({type: 'collapse',payload: {bool: false}});
     };
@@ -37,7 +42,7 @@ export default function UploadForm() {
       <>
         <p className="display-6 text-center mb-3">Upload Stock Image</p>
         <div className="mb-5 d-flex align-items-center justify-content-center">
-          <Preview {...state} />
+          <Preview/>
           <form className="mb-2" style={{ textAlign: "left" }} onSubmit={handleOnSubmit}>
             <div className="mb-3">
               <input
