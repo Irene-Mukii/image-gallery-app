@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
         signIn().then(setCurrentUser);
     };
     const logout = () => {
-        signOut().then(()=> setCurrentUser(null))
+        signOut().then(()=> setCurrentUser(null));
     };
     const value = useMemo (()=>{
         return {
