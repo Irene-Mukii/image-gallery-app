@@ -1,8 +1,10 @@
 import { useMemo, useContext } from "react";
 import { Context } from "../context";
 import Firestore from "../handlers/firestore";
+import Storage from "../handlers/storage";
 
 const { writeDoc } = Firestore;
+const {uploadFile, downloadFile}= Storage;
 
  const Preview = () => {
     const {state} = useContext(Context);
@@ -26,12 +28,17 @@ export default function UploadForm() {
     const handleOnChange = (e) => dispatch({ type:'setInputs', payload: { value: e}})
 
 
-    const handleOnSubmit = (e)=> {
-        e.preventDefault()
-        writeDoc(state.inputs, "stocks").then(console.log)
-        dispatch({type: 'setItem'})
-        dispatch({type: 'collapse',payload: {bool: false}});
-    };
+const handleOnSubmit = (e)=> {
+    e.preventDefault();
+    uploadFile(state.inputs).then(downloadFile).then(url => {
+        writeDoc({...state.inputs, path: url}, "stocks").then(()=>{
+            dispatch({type: 'setItem'})
+            dispatch({type: 'collapse',payload: {bool: false}});
+        })
+
+    })
+
+};
 
     const isDisabled = useMemo(()=>{
         return !!Object.values( state.inputs).some(input => !input)
@@ -66,7 +73,7 @@ export default function UploadForm() {
               type="submit"
               className="btn btn-success float-end"
               disabled={isDisabled}>
-              Save changes
+              Save and upload
             </button>
           </form>
         </div>
