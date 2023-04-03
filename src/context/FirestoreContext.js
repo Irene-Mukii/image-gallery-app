@@ -5,8 +5,7 @@ const {readDocs } = Firestore;
 
 export const Context = createContext();
 
-const photos = [
-];
+const photos = [];
 
 const initialState = {
   items: photos,
@@ -54,7 +53,7 @@ function reducer (state, action) {
 const Provider = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const read = async () => {
-        const items = await readDocs('stocks');
+        const items = await readDocs("stocks");
         dispatch({type: 'setItems', payload: {items}})
     }
     return ( <Context.Provider value={{state, dispatch, read}}>{props.children}</Context.Provider>)

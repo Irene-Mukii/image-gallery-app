@@ -19,7 +19,7 @@ export default function Card(props){
           <h5 className="card-text text-center">{props.title}</h5>
           <div className="card-body d-flex justify-content-between">
             <p>{timeStamp}</p>
-            <p>@username</p>
+            <p>{`@${props.user}`}</p>
           </div>
       </div>
     </div>
