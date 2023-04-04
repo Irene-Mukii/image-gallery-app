@@ -1,10 +1,9 @@
 import { useMemo, useContext, useEffect } from 'react';
 import { Context} from './context/FirestoreContext';
-import Card from './components/Card';
-import Layout from './components/Layout';
 import { useAuthContext } from './context/AuthContext';
+import List from "./components/Lists"
 import './App.css';
-import Firestore from './handlers/firestore';
+
 
 function App() {
   const { read, state} = useContext(Context);
@@ -20,13 +19,11 @@ function App() {
   },[])
 
   return (
-    <Layout>
+    <>
       <h1 className='text-center'> Gallery </h1>
       { count }
-      <div className='row'>
-        {state.items.map((item,index)=> <Card key={index} {...item}/>)}
-      </div>
-    </Layout>
+      <List items={state.items}/>
+    </>
   );
 }
 

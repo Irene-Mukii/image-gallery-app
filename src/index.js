@@ -1,11 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './index.css';
 import App from './App';
+import Layout from './components/Layout';
+import StockImages from './components/StockImages';
 import reportWebVitals from './reportWebVitals';
 import Provider from './context/FirestoreContext';
-import AuthProvider from './context/AuthContext';
+import AuthProvider , {useAuthContext}from './context/AuthContext';
+
+function AppRoutes(){
+const { currentUser } = useAuthContext();
+ return (
+  <Routes>
+    <Route path="" element={<App />} />
+   {currentUser && <Route path='/stockImages' element={<StockImages/>}/>}
+  </Routes>
+ )
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +25,9 @@ root.render(
     <AuthProvider>
       <Provider>
         <Router>
-          <App />
+          <Layout>
+            <AppRoutes/>
+          </Layout>
         </Router>
       </Provider>
     </AuthProvider>

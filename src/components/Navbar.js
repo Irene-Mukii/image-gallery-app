@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import {Link } from "react-router-dom"
 import { useAuthContext } from "../context/AuthContext";
 
 const LogIn = () => {
@@ -17,10 +18,14 @@ const LogOut = () => {
 };
 
 function Navigation(){
+    const { currentUser} = useAuthContext();
     return(
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+                {currentUser && <Link className="nav-link active" aria-current="page" to="/stockImages">My Stock Images</Link>}
             </li>
         </ul>
     )
@@ -54,7 +59,7 @@ function Dropdown (){
         <ul className="navbar-nav mb-2 mb-lg-0">
         {" "}
             <li className="nav-item dropdown">
-                <a
+                <Link
                     className="nav-link dropdown-toggle"
                     href="#"
                     id="navbarDropdown"
@@ -62,12 +67,12 @@ function Dropdown (){
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                     {avatar}
-                </a>
+                </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li>
-                    <a className="dropdown-item text-center" href="#">
+                    <Link className="dropdown-item text-center" href="#">
                         {username}
-                    </a>
+                    </Link>
                     <li><hr className="dropdown divider"></hr></li>
                     <div className="d-flex justify-content-center">
                         <LogIn/>
