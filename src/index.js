@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import Layout from './components/Layout';
 import StockImages from './components/StockImages';
+import Single from './components/Single';
 import reportWebVitals from './reportWebVitals';
 import Provider from './context/FirestoreContext';
 import AuthProvider , {useAuthContext}from './context/AuthContext';
@@ -14,6 +15,7 @@ const { currentUser } = useAuthContext();
  return (
   <Routes>
     <Route path="" element={<App />} />
+    <Route path="/images/:id" element={<Single />} />
    {currentUser && <Route path='/stockImages' element={<StockImages/>}/>}
   </Routes>
  )
