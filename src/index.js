@@ -6,6 +6,8 @@ import App from './App';
 import Layout from './components/Layout';
 import StockImages from './components/StockImages';
 import Single from './components/Single';
+import NotFound from './components/NotFound';
+import Profile from './components/Profile';
 import reportWebVitals from './reportWebVitals';
 import Provider from './context/FirestoreContext';
 import AuthProvider , {useAuthContext}from './context/AuthContext';
@@ -16,7 +18,9 @@ const { currentUser } = useAuthContext();
   <Routes>
     <Route path="" element={<App />} />
     <Route path="/images/:id" element={<Single />} />
-   {currentUser && <Route path='/stockImages' element={<StockImages/>}/>}
+    {currentUser && <Route path='/stockImages' element={<StockImages/>}/>}
+    <Route path="*" element={<NotFound/>}/>
+    <Route path='/profile' element={<Profile/> }/>
   </Routes>
  )
 };
