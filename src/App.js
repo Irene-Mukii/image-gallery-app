@@ -1,7 +1,7 @@
 import { useMemo, useContext, useEffect } from 'react';
 import { Context} from './context/FirestoreContext';
 import { useAuthContext } from './context/AuthContext';
-import List from "./components/Lists"
+import List from "./components/List"
 import './App.css';
 
 

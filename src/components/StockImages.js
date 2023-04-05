@@ -1,4 +1,4 @@
-import List from "./Lists"
+import List from "./List"
 import { useFirestoreContext } from "../context/FirestoreContext";
 import { useAuthContext } from "../context/AuthContext";
 import { useMemo } from "react";
