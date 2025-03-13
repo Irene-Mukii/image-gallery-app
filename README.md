@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+#Image Gallery App
+##Overview
+The Image Gallery App is a simple yet powerful web application that allows users to upload, view, update, and delete images in a personal gallery. Built using a serverless architecture with Firebase, it ensures seamless data storage, real-time updates, and authentication via Google Sign-In.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Features
+✅ Authentication: Users can securely log in using Google Authentication.
+✅ Create: Upload images to Firebase Storage and store metadata in Firestore.
+✅ Read: View a collection of uploaded images in a responsive gallery.
+✅ Update: Modify image details, including title and description.
+✅ Delete: Remove images from both the gallery and Firebase Storage.
+✅ Real-Time Updates: Changes reflect instantly due to Firebase’s real-time database.
 
-## Available Scripts
+##Tech Stack
+Frontend: React.js ( with Next Js framework)
+Backend: Serverless via Firebase Functions
+Database: Firestore (NoSQL)
+Authentication: Firebase Authentication with Google Sign-In
+Storage: Firebase Storage for handling image uploads
+##Installation & Setup
+####Clone the repository
 
-In the project directory, you can run:
+git clone https://github.com/Irene-Mukii/image-gallery-app.git
+cd image-gallery-app
 
-### `npm start`
+####Install dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+####Set up Firebase
 
-### `npm test`
+Create a Firebase project at Firebase Console
+Enable Firestore, Firebase Authentication (Google Sign-In), and Firebase Storage
+Copy Firebase config details and update .env or firebaseConfig.js file in the project
+####Run the application
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm start
 
-### `npm run build`
+##Usage
+Sign in with your Google account.
+Upload images to the gallery.
+Edit image details (e.g., title, description).
+Delete images from your gallery.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Future Enhancements
+Implement image categorization & tagging
+Add pagination for large galleries
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##License
+This project is open-source and available under the MIT License.
